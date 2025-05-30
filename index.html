@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feliz Cumpleaños Papá</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <canvas id="matrix-canvas"></canvas>
+  <div class="center">
+    <h1>¡Feliz cumpleaños papá!</h1>
+    <div id="terminalContainer" class="terminal-text"></div>
+  </div>
+  <div style="height: 200px;"></div>
+  <!-- Imágenes -->
+  <div id="images-section">
+    <img class="fade-image" src="img/imagen1.jpg" alt="Imagen 1">
+    <img class="fade-image" src="img/imagen2.jpg" alt="Imagen 2">
+  </div>
+  <!-- Botón -->
+  <div class="button-section">
+    <button onclick="document.getElementById('digitalizer').scrollIntoView({behavior: 'smooth'})">
+      Digitalizar archivo
+    </button>
+  </div>
+  <!-- Digitalizador -->
+  <div id="digitalizer" style="padding: 2em; text-align: center;">
+    <h2>Digitalizador de Planillas</h2>
+    <input type="file" id="imageInput" accept="image/*"><br><br>
+    <button onclick="processImage()">Procesar Imagen</button>
+    <p id="ocrStatus"></p>
+    <textarea id="ocrResult" placeholder="Texto digitalizado aparecerá aquí..."></textarea><br><br>
+    <button onclick="downloadText()">Descargar como TXT</button>
+    <button onclick="downloadPDF()">Descargar como PDF</button><br><br>
+    <button onclick="window.open('https://drive.google.com/drive/my-drive', '_blank')">Abrir Google Drive</button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.1/dist/tesseract.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
