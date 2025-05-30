@@ -12,6 +12,10 @@
   <div class="center">
     <h1>¡Feliz cumpleaños papá!</h1>
     <div id="terminalContainer" class="terminal-text"></div>
+    <div id="scrollHint" style="display:none; margin-top:32px;">
+      <span style="font-size:1.2em; color:#00ff41; text-shadow:0 0 8px #00ff41;">Sigue bajando</span>
+      <div style="font-size:2em; color:#00ff41; animation: arrowBounce 1.2s infinite;">&#8595;</div>
+    </div>
   </div>
   <div style="height: 200px;"></div>
   <!-- Imágenes -->
@@ -37,8 +41,22 @@
     <button onclick="downloadPDF()">Descargar como PDF</button><br><br>
     <button onclick="window.open('https://drive.google.com/drive/my-drive', '_blank')">Abrir Google Drive</button>
   </div>
+  <style>
+    @keyframes arrowBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(12px); }
+    }
+  </style>
   <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.1/dist/tesseract.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="script.js"></script>
+  <script>
+    // Mostrar el mensaje de "Sigue bajando" cuando termina el typewriter
+    function showScrollHint() {
+      document.getElementById('scrollHint').style.display = 'block';
+    }
+    // Espera a que termine el typewriter (usa el mismo delay que script.js)
+    setTimeout(showScrollHint, 2500 + 55 * document.getElementById('terminalContainer').innerText.length + 1000);
+  </script>
 </body>
 </html>
